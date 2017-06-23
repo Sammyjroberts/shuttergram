@@ -18,13 +18,13 @@ CREATE TABLE user (
 
 `;
 
-
 class User {
     static createTable() {
         return new Promise((resolve, reject) => {
             con.query(CREATE_TABLE_QUERY, (err, result) => {
+                if(err)reject(err);
                 resolve(result);
-                reject(err);
+
             });
         });
     }

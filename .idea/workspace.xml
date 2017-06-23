@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="991dbad6-bd78-45fc-b411-52fa4608624c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_api/models/user.model.js" afterPath="$PROJECT_DIR$/app_api/models/user.model.js" />
     </list>
@@ -48,8 +47,8 @@
       <file leaf-file-name="user.model.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app_api/models/user.model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+            <state relative-caret-position="228">
+              <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
               <folding>
                 <element signature="e#0#45#0" expanded="false" />
               </folding>
@@ -250,12 +249,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1497932336123</updated>
-      <workItem from="1497932337351" duration="8532000" />
+      <workItem from="1497932337351" duration="10353000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8532000" />
+    <option name="totallyTimeSpent" value="10353000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="53" width="1920" height="1058" extended-state="0" />
@@ -352,8 +351,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app_api/models/user.model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+        <state relative-caret-position="228">
+          <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
           <folding>
             <element signature="e#0#45#0" expanded="false" />
           </folding>
