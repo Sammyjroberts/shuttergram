@@ -5,10 +5,14 @@ const express = require("express");
 const router = express.Router();
 const ctrl = require("../controllers/auth.ctrl");
 
+/**
+ *  Route for handling registration
+ */
 router.post("/register", ctrl.register);
 
-router.post("/login", function() {
-
-});
+/**
+ * Route for handling login
+ */
+router.post("/login", ctrl.login);
 
 module.exports = router;
