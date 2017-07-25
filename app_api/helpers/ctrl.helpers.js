@@ -12,4 +12,5 @@ class CtrlHelpers {
         res.json({data: content});
     }
 }
+
 module.exports = CtrlHelpers;

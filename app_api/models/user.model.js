@@ -1,21 +1,11 @@
 /**
  * Created by deanroberts on 6/21/17.
  */
-/**
- * User object is the user information generated from a mysql query or received from a http request .
- * @typedef {Object} User
- * @type Object
- * @property {?int} ID - users mysql ID can be null sometimes.
- * @property {string} firstName - users first Name
- * @property {string} lastName - users last name
- * @property {?string} password - js docs
- * @property {string} email - unique email address for user
- * @property {string} userName - users user name
- * @property {?string} hash - hash for users password can be null
- * @property {?string} salt - salt or random bytes used to secure password
- */
+
+
 const con = require("../../config/connection");
 const crypto = require("crypto");
+const jwt = require('jsonwebtoken');
 const CREATE_TABLE_QUERY = `
 CREATE TABLE IF NOT EXISTS user (
   ID int(11) NOT NULL AUTO_INCREMENT,
@@ -94,7 +84,7 @@ class User {
      */
     static _getUserByName(userName) {
         return new Promise((resolve, reject) => {
-            con.query("SELECT email, userName, salt, hash FROM user where userName = ?",
+            con.query("SELECT ID, firstName, lastname, email, userName, salt, hash FROM user where userName = ?",
                 userName, (err,resp,fields) => {
                     if(err) reject(err);
                     resolve(resp);
@@ -113,14 +103,20 @@ class User {
             // get the row from db
             this._getUserByName(user.userName)
             .then(result => {
+                //if not found
+                if(!result[0]) {
+                    throw new Error("User Not Found");
+                    return;
+                }
                 // see if we have a matching hash
                 const hashToCheckAgainst = result[0].hash;
                 const saltToUse = result[0].salt;
                 const resultantHash = User._generateHash(user.password, saltToUse);
 
                 if(hashToCheckAgainst === resultantHash) {
-                    //we good
-                    resolve("good job")
+                    const token = User._generateJWT(result[0]);
+                    console.log("good job");
+                    resolve(token);
                 }
                 else {
                     reject(new Error("Incorrect Password"));
@@ -138,7 +134,18 @@ class User {
     static resetPassword() {
 
     }
-
+    static _generateJWT(user) {
+        const expiry = new Date();
+        expiry.setDate(expiry.getDate() + 7);
+        return jwt.sign({
+            ID : user.ID,
+            userName: user.userName,
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            exp: parseInt(expiry.getTime() / 1000),
+        }, process.env.jwt_secret);
+    }
     /**
      *
      * @param password

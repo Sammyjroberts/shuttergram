@@ -18,8 +18,8 @@ class AuthenticationCtrl {
         };
         model.login(user)
         .then(result => {
-            console.log("OH BOY");
-            helpers.sendJSONResponse(res, result);
+            console.log("nice meme");
+            helpers.sendJSONResponse(res, {token: result});
         })
         .catch(err => {
             helpers.sendJSONError(res,err);
@@ -42,7 +42,10 @@ class AuthenticationCtrl {
         };
         model.register(user)
         .then(result => {
-            helpers.sendJSONResponse(res, result, 201)
+            delete user.password;
+            delete user.salt;
+            delete user.hash;
+            helpers.sendJSONResponse(res, user, 201)
         })
         .catch(err => {
             helpers.sendJSONError(res,err);
